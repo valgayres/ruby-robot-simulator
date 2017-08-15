@@ -60,7 +60,6 @@ class Robot
 
   def check_position_validity
     raise AlreadyUsedCoordinates if self.class.robots.map(&:coordinates).include?(next_position)
-    true
   end
 
   state_machine :bearing, initial: :north do
@@ -69,15 +68,11 @@ class Robot
     end
 
     event :turn_right do
-      (0..3).each do |i|
-        transition POSSIBLE_DIRECTION[i] => POSSIBLE_DIRECTION[(i + 1) % 4]
-      end
+      (0..3).each { |i| transition POSSIBLE_DIRECTION[i] => POSSIBLE_DIRECTION[(i + 1) % 4] }
     end
 
     event :turn_left do
-      (0..3).each do |i|
-        transition POSSIBLE_DIRECTION[i] => POSSIBLE_DIRECTION[(i - 1) % 4]
-      end
+      (0..3).each { |i| transition POSSIBLE_DIRECTION[i] => POSSIBLE_DIRECTION[(i - 1) % 4] }
     end
 
     event :advance do
