@@ -3,8 +3,8 @@ require 'active_support/core_ext/class/attribute_accessors'
 require 'active_support/core_ext/enumerable'
 
 class Robot
-  cattr_accessor(:robots) { [] }
-  cattr_accessor(:next_id) { 0 }
+  cattr_accessor(:robots)   { [] }
+  cattr_accessor(:next_id)  { 0  }
 
   class AlreadyUsedCoordinates < Exception
 
