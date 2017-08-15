@@ -1,5 +1,6 @@
 require 'state_machine'
 require 'active_support/core_ext/class/attribute_accessors'
+require 'active_support/core_ext/enumerable'
 
 class Robot
   cattr_accessor(:robots) { [] }
@@ -88,12 +89,4 @@ class Robot
     end
   end
 
-end
-
-
-class Array
-  # already defined in ActiveSupport
-  def sum
-    inject(0) {|s, v| s + v}
-  end
 end
